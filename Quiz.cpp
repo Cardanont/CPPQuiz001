@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 
 void PrintIntrodiction(int Difficulty)
 {
@@ -16,9 +17,9 @@ bool PlayGame(int Difficulty)
     PrintIntrodiction(Difficulty);
     
     // Declare numbers codes
-    const int CodeA = rand();
-    const int CodeB = rand();
-    const int CodeC = rand();
+    const int CodeA = rand() % Difficulty + Difficulty;
+    const int CodeB = rand() % Difficulty + Difficulty;
+    const int CodeC = rand() % Difficulty + Difficulty;
 
     
     const int CodeSum = CodeA + CodeB + CodeC;
@@ -32,7 +33,7 @@ bool PlayGame(int Difficulty)
 
     int GuessA, GuessB, GuessC;
 
-    std:: cout << "\n\nGuess a number please: ";
+    std:: cout << "\n\nGuess the codes, hurry!: ";
     std:: cin >> GuessA >> GuessB >> GuessC;
 
     // Store player guess
@@ -42,12 +43,12 @@ bool PlayGame(int Difficulty)
     // Check if the player guess is correct
     if (CodeSum == GuessSum && CodeProduct == GuessProduct)
     {
-        std::cout << "\nYou  Win! you are a champion man!\n\n";
+        std::cout << "\n*** You  did it man! you have that file, keep going! ***\n\n";
         return true;
     }
     else
     {
-        std::cout << "\nYou are wrong man, you lose \n\n";
+        std::cout << "\n*** You are wrong man, you can retry it again... for now ***\n\n";
         return false;
     }
 }
@@ -55,8 +56,10 @@ bool PlayGame(int Difficulty)
 
 int main()
 {
+    srand(time(NULL)); // Create new random sequence based on time of day
+
     int LevelDifficulty = 1;
-    int const MaxDifficulty = 10;
+    int const MaxDifficulty = 5;
 
     while (LevelDifficulty <= MaxDifficulty) // Loop game untill all levels are completed
     {
@@ -70,6 +73,8 @@ int main()
         }
         
     }
+
+    std::cout << "\n*** Congratulations you have all the files you need! I recommend you to get out of there. ***\n";
     
     return 0;
 }
