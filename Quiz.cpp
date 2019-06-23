@@ -48,7 +48,7 @@ bool PlayGame(int Difficulty)
     }
     else
     {
-        std::cout << "\n*** You are wrong man, you can retry it again... for now ***\n\n";
+        std::cout << "\n*** You are wrong man, you can try again... for now ***\n\n";
         return false;
     }
 }
